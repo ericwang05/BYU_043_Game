@@ -1,2 +1,2 @@
 # BYU_043_Game
-This is the game for the final project. The game is (INSERT GAME)
+This is the tictactoe game for the final project.
