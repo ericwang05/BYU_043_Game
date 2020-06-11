@@ -35,9 +35,9 @@ def inputPlayerLetter():
 def whoGoesFirst():
     # Randomly choose the player who goes first.
     if random.randint(0, 1) == 0:
-        return 'player 1'
+        return 'Player 1'
     else:
-        return 'player 2'
+        return 'Player 2'
 
 def playAgain():
     # This function returns True if the player wants to play again, otherwise it returns False.
@@ -108,11 +108,11 @@ while True:
     theBoard = [' '] * 10
     player1Letter, player2Letter = inputPlayerLetter()
     turn = whoGoesFirst()
-    print('The ' + turn + ' will go first.')
+    print(turn + ' will go first.')
     gameIsPlaying = True
 
     while gameIsPlaying:
-        if turn == 'player 1':
+        if turn == 'Player 1':
             # Player 1's turn.
             drawBoard(theBoard)
             move = getPlayerMove(theBoard)
@@ -128,7 +128,7 @@ while True:
                     print('The game is a tie!')
                     break
                 else:
-                    turn = 'player 2'
+                    turn = 'Player 2'
 
         else:
             # Player 2's turn.
@@ -146,7 +146,7 @@ while True:
                     print('The game is a tie!')
                     break
                 else:
-                    turn = 'player 1'
+                    turn = 'Player 1'
 
     if not playAgain():
         break
