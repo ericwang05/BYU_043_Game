@@ -238,9 +238,9 @@ class tictactoe:
                                 print('The game is a tie!')
                                 break
                             else:
-                                turn = 'player1'
+                                turn = 'player 1'
 
                 if not playAgain():
                     break
-game=tictactoe(1) #How many players?
+game=tictactoe(2) #How many players?
 game.play()
