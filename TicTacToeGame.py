@@ -1,5 +1,6 @@
 import random
-from BYU_043_Game_OOP import TicTacToeComputerPlayer, TicTacToePlayer
+from TicTacToeComputerPlayer import Computer
+from TicTacToePlayer import Player
 
 
 class TicTacToeGame:
@@ -52,17 +53,17 @@ class TicTacToeGame:
             'Welcome to Tic Tac Toe!\nJust so you know, 1 is the lower left hand corner, and 9 is the upper right corner.')
         self.howManyPlayers()
         if self.numOfPlayers == 1:
-            self.player1 = TicTacToePlayer.Player()
-            self.player2 = TicTacToeComputerPlayer.Computer()
+            self.player1 = Player()
+            self.player2 = Computer()
         else:
-            self.player1 = TicTacToePlayer.Player()
-            self.player2 = TicTacToePlayer.Player()
+            self.player1 = Player()
+            self.player2 = Player()
         if self.numOfPlayers == 1:
             while True:
                 # Reset the board
                 theBoard = [' '] * 10
-                playerLetter, computerLetter = inputPlayerLetter()
-                turn = whoGoesFirst()
+                playerLetter, computerLetter = Player().inputPlayerLetter()
+                turn = TicTacToeGame().whoGoesFirst()
                 print('The ' + turn + ' will go first.')
                 gameIsPlaying = True
 
@@ -87,7 +88,10 @@ class TicTacToeGame:
 
                     else:
                         # Computer's turn.
-                        move = getComputerMove(theBoard, computerLetter)
+                        comp=Computer()
+                        comp.board=theBoard
+                        comp.computerLetter=computerLetter
+                        move = comp.getComputerMove(theBoard, computerLetter)
                         makeMove(theBoard, computerLetter, move)
 
                         if isWinner(theBoard, computerLetter):

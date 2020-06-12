@@ -1,8 +1,8 @@
 import random
-from BYU_043_Game_OOP import TicTacToePlayer
+from TicTacToePlayer import Player
 
-
-class Computer(TicTacToePlayer.Player):
+print(Player)
+class Computer(Player):
     def chooseRandomMoveFromList(self):
         # Returns a valid move from the passed list on the passed board.
         # Returns None if there is no valid move.
@@ -15,7 +15,7 @@ class Computer(TicTacToePlayer.Player):
             return random.choice(possibleMoves)
         else:
             return None
-    def getComputerMove(self):
+    def getComputerMove(self, board, computerLetter):
         # Given a board and the computer's letter, determine where to move and return that move.
         if computerLetter == 'X':
             playerLetter = 'O'

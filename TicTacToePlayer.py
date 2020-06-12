@@ -1,5 +1,5 @@
 import random
-class Player():
+class Player:
     def inputPlayerLetter(self):
         # Lets the player type which letter they want to be.
         # Returns a list with the player's letter as the first item, and the computer's letter as the second.
