@@ -57,19 +57,6 @@ from TicTacToeBoard import Board
 
 print(Player)
 class Computer(Player):
-    def chooseRandomMoveFromList(self):
-        # Returns a valid move from the passed list on the passed board.
-        # Returns None if there is no valid move.
-        possibleMoves = []
-        for i in movesList:
-            if self.isSpaceFree(board, i):
-                possibleMoves.append(i)
-
-        if len(possibleMoves) != 0:
-            return random.choice(possibleMoves)
-        else:
-            return None
-
     def isSpaceFree(self, board, move):
         # Return true if the passed move is free on the passed board.
         return board[move] == ' '
