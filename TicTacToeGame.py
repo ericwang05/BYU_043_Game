@@ -55,7 +55,7 @@ class TicTacToeGame:
         return int(move)
     def play(self):
         print(
-            'Welcome to Tic Tac Toe!\nJust so you know, 1 is the lower left hand corner, and 9 is the upper right corner.')
+            'Welcome to Tic Tac Toe!\n')
         self.howManyPlayers()
         if self.numOfPlayers == 1:
             self.player1 = Player()
@@ -72,7 +72,8 @@ class TicTacToeGame:
                 b = Board()
                 playerLetter, computerLetter = Player().inputPlayerLetter()
                 turn = TicTacToeGame().whoGoesFirst()
-                print('The ' + turn + ' will go first.')
+                print(turn.upper() + ' will go first.\n')
+                print('Just so you know, 1 is the lower left hand corner, and 9 is the upper right corner.\n')
                 gameIsPlaying = True
 
                 while gameIsPlaying:
