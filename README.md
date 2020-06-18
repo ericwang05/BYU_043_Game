@@ -1,6 +1,6 @@
 # Introduction
 
-Hi. We are Benjamin Chen, Eric Wang, and Gursirat Singh, authors of this Tic Tac Toe game. There can be 1 player or 2 players, depending on what the user wants. Libraries used: random
+Hi. We are Benjamin Chen, Eric Wang, and Gursirat Singh, authors of this Tic Tac Toe game. There can be 1 player or 2 players, depending on what the user wants. Libraries used: random.
 
 ## Features
 Additional features:
