@@ -35,6 +35,7 @@
 
 import random
 class Board:
+
     def drawBoard(self, board):
         # This function prints out the board that it was passed.
 
@@ -56,11 +57,12 @@ class Board:
 
         for i in board:
             dupeBoard.append(i)
-
         return dupeBoard
-    def isSpaceFree(self, board, move):
+
+    def isSpaceFree(self, boardSpaces, move):
         # Return true if the passed move is free on the passed board.
-        return board[move] == ' '
+        return boardSpaces[move] == ' '
+
     def isBoardFull(self, board):
         # Return True if every space on the board has been taken. Otherwise return False.
         for i in range(1, 10):

@@ -15,42 +15,31 @@ class TicTacToeGame:
             print("How many players are there?(1 or 2):", end="")
             self.numOfPlayers = int(input())
 
-    def makeMove(self, board, letter, move):
-        board[move] = letter
 
     def whoGoesFirst(self):
         # Randomly choose the player who goes first.
-        if random.randint(0, 1) == 0:
             if self.numOfPlayers == 1:
-                return 'computer'
-            else:
-                return 'player 2'
-        else:
-            if self.numOfPlayers == 1:
-                return 'player'
-            else:
-                return 'player 1'
+                if random.randint(2,3) == 2:
+                    return 'Computer'
+                else:
+                    return 'Player'
+            if self.numOfPlayers == 2:
+                if random.randint(1, 2) == 1:
+                    return 'Player 1'
+                else:
+                    return 'Player 2'
     def playAgain(self):
         # This function returns True if the player wants to play again, otherwise it returns False.
         print('Do you want to play again? (yes or no)')
         return input().lower().startswith('y')
-    def isWinner(self,bo,le):
-        # Given a board and a player's letter, this function returns True if that player has won.
-        # We use bo instead of board and le instead of letter so we don't have to type as much.
-        return ((bo[7] == le and bo[8] == le and bo[9] == le) or  # across the top
-                (bo[4] == le and bo[5] == le and bo[6] == le) or  # across the middle
-                (bo[1] == le and bo[2] == le and bo[3] == le) or  # across the bottom
-                (bo[7] == le and bo[4] == le and bo[1] == le) or  # down the left side
-                (bo[8] == le and bo[5] == le and bo[2] == le) or  # down the middle
-                (bo[9] == le and bo[6] == le and bo[3] == le) or  # down the right side
-                (bo[7] == le and bo[5] == le and bo[3] == le) or  # diagonal
-                (bo[9] == le and bo[5] == le and bo[1] == le))  # diagonal
 
-    def getPlayerMove(self, b, board):
+
+
+    def getPlayerMove(self, b, board,turn):
         # Let the player type in his move.
         move = ' '
         while move not in '1 2 3 4 5 6 7 8 9'.split() or not b.isSpaceFree(board, int(move)):
-            print('What is your next move? (1-9)')
+            print(turn +', what is your next move? (1-9)')
             move = input()
         return int(move)
     def play(self):
@@ -70,20 +59,31 @@ class TicTacToeGame:
                 # Reset the board
                 theBoard = [' '] * 10
                 b = Board()
-                playerLetter, computerLetter = Player().inputPlayerLetter()
-                turn = TicTacToeGame().whoGoesFirst()
-                print(turn.upper() + ' will go first.\n')
+
+                turn = self.whoGoesFirst()
+                print('\n' + str(turn).upper() + ' will go first.\n')
+                if turn=='Player':
+                    (playerLetter, computerLetter) = Player().inputPlayerLetter(turn)
+                    self.player1.playerLetter = playerLetter
+                    self.player2.playerLetter = computerLetter
+                else:
+                    (playerLetter, computerLetter) = Computer().inputPlayerLetter()
+                    self.player1.playerLetter = playerLetter
+                    self.player2.playerLetter = computerLetter
+                    print(playerLetter + " is your letter, Player\n")
+
                 print('Just so you know, 1 is the lower left hand corner, and 9 is the upper right corner.\n')
+
                 gameIsPlaying = True
 
                 while gameIsPlaying:
-                    if turn == 'player':
+                    if turn == 'Player':
                         # Player's turn.
                         b.drawBoard(theBoard)
-                        move = self.getPlayerMove(b, theBoard)
-                        self.makeMove(theBoard, playerLetter, move)
+                        move = self.getPlayerMove(b, theBoard,turn)
+                        self.player1.makeMove(theBoard, move)
 
-                        if self.isWinner(theBoard, playerLetter):
+                        if self.player1.isWinner(theBoard):
                             b.drawBoard(theBoard)
                             print('Hooray! You have won the game!')
                             score[0]+=1
@@ -94,29 +94,27 @@ class TicTacToeGame:
                                 print('The game is a tie!')
                                 break
                             else:
-                                turn = 'computer'
+                                turn = 'Computer'
 
                     else:
-                        # Computer's turn.
-                        comp=Computer()
-                        comp.board=theBoard
-                        comp.computerLetter=computerLetter
-                        move = comp.getComputerMove(theBoard, computerLetter)
-                        self.makeMove(theBoard, computerLetter, move)
+                        if turn=="Computer":
+                            # Computer's turn.
+                            move = self.player2.getComputerMove(theBoard, self.player1)
+                            self.player2.makeMove(theBoard,move)
 
-                        if self.isWinner(theBoard, computerLetter):
-                            b.drawBoard(theBoard)
-                            print('The computer has beaten you! You lose.')
-                            score[1]+=1
-                            gameIsPlaying = False
-                        else:
-                            if b.isBoardFull(theBoard):
+                            if self.player2.isWinner(theBoard):
                                 b.drawBoard(theBoard)
-                                print('The game is a tie!')
-                                break
+                                print('The Computer has beaten you! You lose.')
+                                score[1]+=1
+                                gameIsPlaying = False
                             else:
-                                turn = 'player'
-                print("Stats\nplayer 1: {}\nplayer 2/computer: {}".format(score[0], score[1]))
+                                if b.isBoardFull(theBoard):
+                                    b.drawBoard(theBoard)
+                                    print('The game is a tie!')
+                                    break
+                                else:
+                                    turn = 'Player'
+                print("Stats\nPlayer: {}\nComputer: {}".format(score[0], score[1]))
                 if not self.playAgain():
                     return
                 else:
@@ -127,21 +125,25 @@ class TicTacToeGame:
                 b = Board()
                 p = Player()
 
-                player1Letter, player2Letter = p.inputPlayerLetter()
                 turn = self.whoGoesFirst()
-                print(turn + ' will go first.')
+                print('\n' + str(turn).upper() + ' will go first.\n')
+                (player1Letter, player2Letter) = p.inputPlayerLetter(turn)
+                self.player1.playerLetter = player1Letter
+                self.player2.playerLetter = player2Letter
+                print('Just so you know, 1 is the lower left hand corner, and 9 is the upper right corner.\n')
+
                 gameIsPlaying = True
 
                 while gameIsPlaying:
-                    if turn == 'player 1':
+                    if turn == 'Player 1':
                         # Player's turn.
                         b.drawBoard(theBoard)
-                        move = self.getPlayerMove(b, theBoard)
-                        self.makeMove(theBoard, player1Letter, move)
+                        move = self.getPlayerMove(b, theBoard,turn)
+                        self.player1.makeMove(theBoard, move)
 
-                        if self.isWinner(theBoard, player1Letter):
+                        if self.player1.isWinner(theBoard):
                             b.drawBoard(theBoard)
-                            print('Hooray!', player1Letter+ ' has won the game!')
+                            print('Hooray! '+ 'Player 1'+ ' has won the game!')
                             score[0]+=1
                             gameIsPlaying = False
                         else:
@@ -150,31 +152,31 @@ class TicTacToeGame:
                                 print('The game is a tie!')
                                 break
                             else:
-                                turn = 'player2'
+                                turn = 'Player 2'
 
                     else:
-                        # Player's turn.
-                        b.drawBoard(theBoard)
-                        move = self.getPlayerMove(b, theBoard)
-                        self.makeMove(theBoard, player2Letter, move)
-
-                        if self.isWinner(theBoard, player2Letter):
+                        if turn=="Player 2":
                             b.drawBoard(theBoard)
-                            print('Hooray!', player2Letter, ' has won the game!')
-                            score[1]+=1
-                            gameIsPlaying = False
-                        else:
-                            if b.isBoardFull(theBoard):
+                            move = self.getPlayerMove(b, theBoard,turn)
+                            self.player2.makeMove(theBoard,move)
+
+                            if self.player2.isWinner(theBoard):
                                 b.drawBoard(theBoard)
-                                print('The game is a tie!')
-                                break
+                                print('Hooray! '+ 'Player 2' + ' has won the game!')
+                                score[1]+=1
+                                gameIsPlaying = False
                             else:
-                                turn = 'player 1'
-                print("Stats\nplayer 1: {}\nplayer 2/computer: {}".format(score[0], score[1]))
+                                if b.isBoardFull(theBoard):
+                                    b.drawBoard(theBoard)
+                                    print('The game is a tie!')
+                                    break
+                                else:
+                                    turn = 'Player 1'
+                print("Stats\nPlayer 1: {}\nPlayer 2: {}".format(score[0], score[1]))
                 if not self.playAgain():
                     return
                 else:
-                    pnum=int(input("How many players? "))
+                    pnum=int(input("How many players?: "))
 
 game=TicTacToeGame() #How many players?
 game.play()
