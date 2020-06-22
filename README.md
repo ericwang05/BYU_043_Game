@@ -23,10 +23,14 @@ Here is an example of gameplay.
 ```
 Welcome to Tic Tac Toe!
 
-How many players are there?(1 or 2):2
-Do you want to be X or O?
+How many players?: 2
+
+PLAYER 1 will go first.
+
+Player 1 , what is your letter?:
 x
-player 1 will go first.
+Just so you know, 1 is the lower left hand corner, and 9 is the upper right corner.
+
    |   |
    |   |  
    |   |
@@ -38,7 +42,7 @@ player 1 will go first.
    |   |
    |   |  
    |   |
-What is your next move? (1-9)
+Player 1, what is your next move? (1-9)
 1
    |   |
    |   |  
@@ -51,7 +55,47 @@ What is your next move? (1-9)
    |   |
  X |   |  
    |   |
-What is your next move? (1-9)
+Player 2, what is your next move? (1-9)
+5
+   |   |
+   |   |  
+   |   |
+-----------
+   |   |
+   | O |  
+   |   |
+-----------
+   |   |
+ X |   |  
+   |   |
+Player 1, what is your next move? (1-9)
+7
+   |   |
+ X |   |  
+   |   |
+-----------
+   |   |
+   | O |  
+   |   |
+-----------
+   |   |
+ X |   |  
+   |   |
+Player 2, what is your next move? (1-9)
+4
+   |   |
+ X |   |  
+   |   |
+-----------
+   |   |
+ O | O |  
+   |   |
+-----------
+   |   |
+ X |   |  
+   |   |
+Player 1, what is your next move? (1-9)
+
 ```
 The player can choose how many people play the game (1 or 2), and the first person to go can choose to be X or O.
 
