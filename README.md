@@ -18,7 +18,9 @@ To run the game, there are a few options:
 *note that to run the file in the terminal without errors, you have to say "python3," not "python."
 - Open the file using an interpreter like IDLE and run it
 
-Need a keyboard
+The user will:
+- Need a keyboard
+You will first:
 Choose your mode: (1-player or 2-player)
 The board will be loaded
 Then Enter whether you would like to be X or O by typing the letter in when prompted.
