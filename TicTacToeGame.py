@@ -11,6 +11,7 @@ class TicTacToeGame:
         self.player2=None
 
     def howManyPlayers(self):
+        self.numOfPlayers=0
         while self.numOfPlayers not in [1,2]:
             print("How many players are there?(1 or 2):", end="")
             self.numOfPlayers = int(input())
@@ -45,16 +46,17 @@ class TicTacToeGame:
     def play(self):
         print(
             'Welcome to Tic Tac Toe!\n')
-        self.howManyPlayers()
-        if self.numOfPlayers == 1:
-            self.player1 = Player()
-            self.player2 = Computer()
-        else:
-            self.player1 = Player()
-            self.player2 = Player()
-        pnum=self.numOfPlayers
+
         score=[0,0]
         while True:
+            self.howManyPlayers()
+            if self.numOfPlayers == 1:
+                self.player1 = Player()
+                self.player2 = Computer()
+            else:
+                self.player1 = Player()
+                self.player2 = Player()
+            pnum = self.numOfPlayers
             if pnum == 1:
                 # Reset the board
                 theBoard = [' '] * 10
@@ -117,8 +119,6 @@ class TicTacToeGame:
                 print("Stats\nPlayer: {}\nComputer: {}".format(score[0], score[1]))
                 if not self.playAgain():
                     return
-                else:
-                    pnum=int(input("How many players? "))
             else:
                 # Reset the board
                 theBoard = [' '] * 10
@@ -175,8 +175,7 @@ class TicTacToeGame:
                 print("Stats\nPlayer 1: {}\nPlayer 2: {}".format(score[0], score[1]))
                 if not self.playAgain():
                     return
-                else:
-                    pnum=int(input("How many players?: "))
 
-game=TicTacToeGame() #How many players?
+
+game=TicTacToeGame()
 game.play()

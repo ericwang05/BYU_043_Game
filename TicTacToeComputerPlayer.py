@@ -100,7 +100,7 @@ class Computer(Player):
             return move
 
         # Try to take the center, if it is free.
-        if board.isSpaceFree(5):
+        if b.isSpaceFree(5,move):
             return 5
 
         # Move on one of the sides.
