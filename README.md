@@ -20,11 +20,17 @@ To run the game, there are a few options:
 
 The user will:
 - Need a keyboard
+
 You will first:
+
 Choose your mode: (1-player or 2-player)
+
 The board will be loaded
+
 Then Enter whether you would like to be X or O by typing the letter in when prompted.
+
 The computer will randomly choose who gets to start if you choose the mode to be 2 player then it will choose a random player to start, if 1 player, either the computer or the player will get to start. 
+
 For your move you will have a box such as this:
 ```
    |   |
