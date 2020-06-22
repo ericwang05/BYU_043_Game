@@ -18,7 +18,37 @@ To run the game, there are a few options:
 *note that to run the file in the terminal without errors, you have to say "python3," not "python."
 - Open the file using an interpreter like IDLE and run it
 
-Here is an example of gameplay.
+Need a keyboard
+Choose your mode: (1-player or 2-player)
+The board will be loaded
+Then Enter whether you would like to be X or O by typing the letter in when prompted.
+The computer will randomly choose who gets to start if you choose the mode to be 2 player then it will choose a random player to start, if 1 player, either the computer or the player will get to start. 
+For your move you will have a box such as this:
+```
+   |   |
+   |   |  
+   |   |
+-----------
+   |   |
+   |   |  
+   |   |
+-----------
+   |   |
+   |   |  
+   |   |
+```
+The numbers represent the number you will have to choose to select where your marker goes each turn.
+This will be repeated until either the board is filled (tie) or a player wins.
+If the space is not available you will be prompted again for your selection.
+Goal:
+To get three of your marker in a row first
+Try to stop your opponent from doing the same.
+
+Once the game is over the winner will be announced and you will be asked if you want to play again. The scoreboard will also be displayed.
+If so, type in: “yes” → If you typed in yes, you will be reset and asked game mode(number of players)
+If not type: anything other than yes
+
+
 
 ```
 Welcome to Tic Tac Toe!
@@ -97,13 +127,6 @@ Player 2, what is your next move? (1-9)
 Player 1, what is your next move? (1-9)
 
 ```
-The player can choose how many people play the game (1 or 2), and the first person to go can choose to be X or O.
-
-To place a marker, the current player inputs an eligible number to substitute their marker with that number (if that number doesn't exist, then the player will be prompted again). Then, their turn ends and gameplay switches to the other player (or the computer in 1 player mode).
-
-The game ends when:
-- one player places 3 markers in a row
-- there are no more available markers left on the board
 
 ## Computer Algorithm
 
@@ -115,3 +138,4 @@ The computer works by:
 5. choosing an edge, if available
 
 Stopping if there are no more spaces left on the board ensures that there will never be an error when the computer decides its move.
+
