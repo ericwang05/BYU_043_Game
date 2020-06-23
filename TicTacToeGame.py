@@ -49,7 +49,10 @@ class TicTacToeGame:
 
         score=[0,0]
         while True:
+            lastgamenum=self.numOfPlayers
             self.howManyPlayers()
+            if self.numOfPlayers!=lastgamenum:
+                score = [0, 0]
             if self.numOfPlayers == 1:
                 self.player1 = Player()
                 self.player2 = Computer()
