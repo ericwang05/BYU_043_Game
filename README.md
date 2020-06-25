@@ -136,7 +136,7 @@ Player 1, what is your next move? (1-9)
 
 ```
 
-## Computer Algorithm
+## Program Design
 
 The computer works by:
 1. seeing if the computer can win in one move
