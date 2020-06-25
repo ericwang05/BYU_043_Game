@@ -188,30 +188,4 @@ getPlayerMove(): Asks the player to pick a position on the board to mark
 play(): The main function we call to actually play the game
 
 
-Requirements:
-Need a keyboard
-Choose your mode: (1-player or 2-player)
-The board will be loaded
-Then Enter whether you would like to be X or O by typing the letter in when prompted.
-The computer will randomly choose who gets to start if you choose the mode to be 2 player then it will choose a random player to start, if 1 player, either the computer or the player will get to start. 
-For your move you will have a box such as this(without the numbers):
-
-7 | 8 | 9
-----------
-4 | 5 | 6 
----------
-1 | 2 | 3
-
-The numbers represent the number you will have to choose to select where your marker goes each turn.
-This will be repeated until either the board is filled (tie) or a player wins.
-If the space is not available you will be prompted again for your selection.
-
-Goal:
-To get three of your marker in a row first
-Try to stop your opponent from doing the same.
-
-Once the game is over the winner will be announced and you will be asked if you want to play again. The scoreboard will also be displayed.
-If so, type in: “yes” → If you typed in yes, you will be reset and asked game mode(number of players)
-If not type: anything other than yes
-
 
